@@ -1,8 +1,13 @@
 {
   "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.43.4",
     "stylelint-config-standard": "^23.0.0"
   },
   "dependencies": {
+    "gulp-header": "^2.0.9",
+    "gulp-postcss": "^9.0.1",
     "postcss-scss": "^4.0.2",
     "semantic-release": "^18.0.0"
   },
