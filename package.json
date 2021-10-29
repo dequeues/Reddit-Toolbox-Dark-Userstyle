@@ -9,6 +9,7 @@
   "dependencies": {
     "gulp-header": "^2.0.9",
     "gulp-postcss": "^9.0.1",
+    "postcss": "^8.3.11",
     "postcss-scss": "^4.0.2"
   },
   "scripts": {
