@@ -36,12 +36,19 @@ jobs:
         run: |
           npx gulp css
 
+      - name: get version
+        id: version
+        uses: notiz-dev/github-action-json-property@release
+        with:
+          path: 'package.json'
+          prop_path: 'version'
+
       - name: Commit files
         run: |
           git config --local user.name ${{ github.actor }}
           git add dist/toolbox-dark.user.css
           git add dist/toolbox-dark.css
-          git commit -m "Relase userstyle"
+          git commit -m "Relase userstyle (version ${{steps.version.outputs.prop}})"
 
       - name: "Push changes"
         uses: ad-m/github-push-action@master
