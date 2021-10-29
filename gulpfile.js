@@ -8,15 +8,15 @@ const rename = require('gulp-rename');
 const headerTemplate = `/* ==UserStyle==
 @name           reddit toolbox dark userstyle
 @namespace      https://github.com/dequeues/Reddit-Toolbox-Dark-Userstyle
-@version        1.0.0
+@version        ${require("./package.json").version}
 @description    Dark mode for reddit toolbox on new reddit
 @author         dequeues
 @supportURL     https://github.com/dequeues/Reddit-Toolbox-Dark-Userstyle/issues
-@updateURL      NEED_TO_DO_SOMETHING_HERE
+@updateURL      https://github.com/dequeues/Reddit-Toolbox-Dark-Userstyle/raw/main/dist/toolbox-dark.user.css
 ==/UserStyle== */`;
 
 
-function buildStyles() {
+function buildStylus() {
   return gulp.src('**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(header(`${headerTemplate}\n\n`))
@@ -28,4 +28,16 @@ function buildStyles() {
     .pipe(gulp.dest('./dist'));
 };
 
-gulp.task('css', buildStyles);
+function buildRawStylesheet() {
+    return gulp.src('**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(header(`${headerTemplate}\n\n`))
+    .pipe(rename((path) => {
+        path.dirname = "";
+        path.basename = "toolbox-dark",
+        path.extname = ".css"
+    }))
+    .pipe(gulp.dest('./dist'));
+}
+
+exports.release = gulp.series(buildStylus, buildRawStylesheet);
