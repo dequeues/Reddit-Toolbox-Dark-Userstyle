@@ -34,7 +34,7 @@ jobs:
 
       - name: Build userstyle
         run: |
-          npx gulp css
+          npx gulp release
 
       - name: get version
         id: version
