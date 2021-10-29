@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "stylelint-config-standard": "^23.0.0"
+  },
+  "dependencies": {
+    "postcss-scss": "^4.0.2",
+    "semantic-release": "^18.0.0"
+  },
+  "scripts": {
+    "watch": "npx sass --watch src/toolbox-dark.scss dist/toolbox-dark.css",
+    "build": "npx sass --no-source-map src/toolbox-dark.scss dist/toolbox-dark.css",
+    "stylelint": "npx stylelint --custom-syntax postcss-scss src/**/*.scss"
+  }
+}

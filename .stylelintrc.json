@@ -1,0 +1,8 @@
+{
+    "extends": "stylelint-config-standard",
+    "rules": {
+        "no-descending-specificity": null,
+        "max-line-length": null,
+        "selector-class-pattern": null
+    }
+  }
