@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+
+      - run: npm install
+      - run: npm run stylelint
+
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+
+      - run: npm install
+      - run: npm run stylelint
+
+      - name: Build userstyle
+        run: |
+          npx gulp css
+
+      - name: Commit files
+        run: |
+          git config --local user.name ${{ github.actor }}
+          git add dist/toolbox-dark.user.css
+          git add dist/toolbox-dark.css
+          git commit -m "Relase userstyle"
+
+      - name: "Push changes"
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true

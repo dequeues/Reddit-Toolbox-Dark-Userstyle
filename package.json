@@ -1,4 +1,5 @@
 {
+  "version": "1.0.0",
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-sass": "^5.0.0",
@@ -8,8 +9,7 @@
   "dependencies": {
     "gulp-header": "^2.0.9",
     "gulp-postcss": "^9.0.1",
-    "postcss-scss": "^4.0.2",
-    "semantic-release": "^18.0.0"
+    "postcss-scss": "^4.0.2"
   },
   "scripts": {
     "watch": "npx sass --watch src/toolbox-dark.scss dist/toolbox-dark.user.css",
